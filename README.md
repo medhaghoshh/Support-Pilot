@@ -1,4 +1,4 @@
-# Ticket Submission Form — Setup
+# Ticket Submission Form - Setup
 
 ## 1. Install dependencies
 ```bash
