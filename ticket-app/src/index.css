@@ -1,0 +1,258 @@
+@import "tw-animate-css";
+@import "@fontsource-variable/geist";
+
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-sans: "Geist Variable", system-ui, -apple-system, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  
+  --color-indigo-50: var(--brand-light);
+  --color-indigo-100: var(--brand-border);
+  --color-indigo-150: var(--brand-border);
+  --color-indigo-200: var(--brand-border);
+  --color-indigo-500: var(--brand-primary);
+  --color-indigo-600: var(--brand-primary);
+  --color-indigo-700: var(--brand-primary);
+  --color-indigo-955: var(--brand-light);
+}
+
+
+:root {
+  --bg-background: #fafafa;
+  --bg-card: #ffffff;
+  --border-color: #e4e4e7;
+  
+  --bg-foreground: #09090b;
+  --text-secondary: #52525b;
+  --text-muted: #a1a1aa;
+  
+  --brand-primary: #4f46e5;
+  --brand-light: #f5f3ff;
+  --brand-border: #ddd6fe;
+  
+  --success-primary: #10b981;
+  --success-light: #ecfdf5;
+  
+  --danger-primary: #ef4444;
+  --danger-light: #fef2f2;
+  
+  --warning-primary: #f59e0b;
+  --warning-light: #fffbeb;
+  
+  color-scheme: light;
+}
+
+.dark {
+  --bg-background: #09090b; /* Zinc 950 */
+  --bg-card: #141416;       /* Zinc 900 custom */
+  --border-color: #27272a;  /* Zinc 800 */
+  
+  --bg-foreground: #f4f4f5;
+  --text-secondary: #a1a1aa;
+  --text-muted: #71717a;
+  
+  --brand-primary: #6366f1; /* Tech Indigo */
+  --brand-light: rgba(99, 102, 241, 0.15);
+  --brand-border: rgba(99, 102, 241, 0.3);
+  
+  --success-primary: #34d399;
+  --success-light: rgba(52, 211, 153, 0.15);
+  
+  --danger-primary: #f87171;
+  --danger-light: rgba(248, 113, 113, 0.15);
+  
+  --warning-primary: #fb923c;
+  --warning-light: rgba(251, 146, 60, 0.15);
+  
+  color-scheme: dark;
+}
+
+/* Global Reset & Base Styles */
+body {
+  margin: 0;
+  background-color: var(--bg-background) !important;
+  color: var(--bg-foreground) !important;
+  font-family: var(--font-sans);
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#root {
+  width: 100%;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border-color);
+  border-radius: 99px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-muted);
+}
+
+/* Universal overrides for styling compatibility */
+.bg-white {
+  background-color: var(--bg-card) !important;
+}
+
+.bg-gray-50,
+.bg-slate-50 {
+  background-color: var(--bg-background) !important;
+}
+
+.bg-gray-100 {
+  background-color: var(--border-color) !important;
+}
+
+.border-gray-200,
+.border-gray-100,
+.border-slate-200 {
+  border-color: var(--border-color) !important;
+}
+
+.text-gray-900,
+.text-gray-800,
+h1, h2, h3, h4, h5, h6 {
+  color: var(--bg-foreground) !important;
+}
+
+.text-gray-700,
+.text-gray-600 {
+  color: var(--text-secondary) !important;
+}
+
+.text-gray-500,
+.text-gray-400 {
+  color: var(--text-muted) !important;
+}
+
+/* Intercept Accent Colors (Blue -> brand-primary, Purple -> brand-primary, etc.) */
+.bg-blue-600,
+.bg-blue-700,
+.bg-violet-600,
+.hover\:bg-blue-700:hover,
+.hover\:bg-blue-600:hover {
+  background-color: var(--brand-primary) !important;
+  color: #ffffff !important;
+}
+
+.text-blue-600,
+.text-blue-700,
+.text-blue-500,
+.text-violet-600 {
+  color: var(--brand-primary) !important;
+}
+
+.bg-blue-50,
+.bg-blue-50\/50,
+.bg-violet-50 {
+  background-color: var(--brand-light) !important;
+  color: var(--brand-primary) !important;
+}
+
+.border-blue-100,
+.border-blue-200 {
+  border-color: var(--brand-border) !important;
+}
+
+/* Success overrides */
+.bg-emerald-50,
+.bg-green-50 {
+  background-color: var(--success-light) !important;
+  color: var(--success-primary) !important;
+}
+.text-emerald-600,
+.text-green-600 {
+  color: var(--success-primary) !important;
+}
+
+/* Danger overrides */
+.bg-red-50,
+.bg-rose-50 {
+  background-color: var(--danger-light) !important;
+  color: var(--danger-primary) !important;
+}
+.text-red-700,
+.text-red-600,
+.text-rose-700 {
+  color: var(--danger-primary) !important;
+}
+.border-red-100 {
+  border-color: var(--danger-primary) !important;
+}
+
+/* Warnings overrides */
+.bg-amber-50,
+.bg-orange-50 {
+  background-color: var(--warning-light) !important;
+  color: var(--warning-primary) !important;
+}
+.text-amber-600,
+.text-orange-600,
+.text-amber-700 {
+  color: var(--warning-primary) !important;
+}
+
+/* Form Fields */
+input, select, textarea {
+  background-color: var(--bg-card) !important;
+  color: var(--bg-foreground) !important;
+  border-color: var(--border-color) !important;
+}
+input:focus, select:focus, textarea:focus {
+  border-color: var(--brand-primary) !important;
+  outline: none !important;
+  box-shadow: 0 0 0 2px var(--brand-light) !important;
+}
+
+/* Layout Density Overrides */
+.density-compact .p-8 {
+  padding: 1rem !important;
+}
+.density-compact .p-6,
+.density-compact .p-5 {
+  padding: 0.75rem !important;
+}
+.density-compact .p-4 {
+  padding: 0.5rem !important;
+}
+.density-compact .space-y-6 > :not([hidden]) ~ :not([hidden]) {
+  margin-top: 0.85rem !important;
+}
+.density-compact .space-y-8 > :not([hidden]) ~ :not([hidden]) {
+  margin-top: 1rem !important;
+}
+.density-compact .gap-6 {
+  gap: 0.85rem !important;
+}
+.density-compact .gap-8 {
+  gap: 1rem !important;
+}
+
+.density-cozy .p-8 {
+  padding: 1.5rem !important;
+}
+.density-cozy .p-6,
+.density-cozy .p-5 {
+  padding: 1rem !important;
+}
+.density-cozy .space-y-6 > :not([hidden]) ~ :not([hidden]) {
+  margin-top: 1.15rem !important;
+}
+.density-cozy .gap-6 {
+  gap: 1.15rem !important;
+}
